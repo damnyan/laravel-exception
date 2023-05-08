@@ -5,6 +5,7 @@
             "Dmn\\Exceptions\\": "src/"
         }
     },
+    "license": "MIT",
     "description": "Exceptions for Larave 10+",
     "authors": [
         {
