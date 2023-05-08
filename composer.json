@@ -1,0 +1,23 @@
+{
+    "name": "dmn/exception",
+    "autoload": {
+        "psr-4": {
+            "Dmn\\Exceptions\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "dc",
+            "email": "damnyan@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "orchestra/testbench": "^8.5",
+        "laravel/framework": "^10.9"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}
