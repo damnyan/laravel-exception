@@ -2,7 +2,7 @@
 `composer require dmn/laravel-exception`
 
 # Usage
-Extend `Dmn\Exceptions\Handler` to your `app/Exceptions/Handler.php`
+Extend `Dmn\Exceptions\Handler` to your `app/Exceptions/Handler.php` and add `parent::register()` to your `register()`.
 ```php
 <?php
 
@@ -13,7 +13,19 @@ use Throwable;
 
 class Handler extends ExceptionHandler
 {
-....
+...
+    /**
+     * Register the exception handling callbacks for the application.
+     */
+    public function register(): void
+    {
+        parent::register();
+        $this->reportable(function (Throwable $e) {
+            //
+        });
+    }
+...
+}
 ```
 
 To add more custom exceptions, add new exception by running `php artisan make:exception` and extend `Dmn\Exceptions\Exception` instead of `\Exception`.
