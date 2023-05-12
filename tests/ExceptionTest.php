@@ -27,9 +27,15 @@ class ExceptionTest extends TestCase
         $this->app->singleton(
             \Illuminate\Contracts\Debug\ExceptionHandler::class, \Dmn\Exceptions\Handler::class
         );
-
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    protected function getEnvironmentSetUp($app)
+    {
+        Config::set('dmod_exception', include __DIR__ . '/../config/config.php');
+    }
 
 
     /**
@@ -40,7 +46,6 @@ class ExceptionTest extends TestCase
      */
     protected function getPackageProviders($app)
     {
-        Config::set('validation', include __DIR__ . '/../config/validation.php');
         return [
             ServiceProvider::class,
         ];
@@ -247,7 +252,7 @@ class ExceptionTest extends TestCase
         $response = $this->getJson(route('reference.group1.field'));
 
         $this->assertEquals(
-            config('validation.references.group1.field'),
+            config('dmod_exception.references.group1.field'),
             $response->json('data')
         );
     }

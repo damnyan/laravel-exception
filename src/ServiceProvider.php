@@ -12,6 +12,10 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot(): void
     {
+        $this->publishes([
+            __DIR__.'/../config/config.php' => config_path('dmod_exception.php')
+        ], 'dmod-exception-config');
+
         $this->loadRoutesFrom(__DIR__ . '/../routes/reference.php');
     }
 }

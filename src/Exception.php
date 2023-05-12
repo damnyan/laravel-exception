@@ -133,8 +133,8 @@ class Exception extends BaseException
      */
     private function setReferences(array &$response): void
     {
-        $group = Config::get('validation.default_group');
-        $references = (array) Config::get('validation.references.' . $group);
+        $group = Config::get('dmod_exception.default_group');
+        $references = (array) Config::get('dmod_exception.references.' . $group);
 
         foreach ($references as $reference => $data) {
             $pattern = '/^' . $reference . '(\.\S+)?$/i';

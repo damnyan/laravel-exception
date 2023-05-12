@@ -3,8 +3,9 @@
 use Dmn\Exceptions\Controllers\ReferenceController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'reference'], function () {
-    $groups = config('validation.references') ?? [];
+$config = config('dmod_exception');
+Route::group(['prefix' => $config['prefix'] . '/reference'], function () use ($config) {
+    $groups = $config['references'] ?? [];
     foreach ($groups as $group => $references) {
         foreach ($references as $reference => $data) {
             Route::get("$group/$reference", function () use ($data) {
